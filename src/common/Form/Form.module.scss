@@ -1,0 +1,27 @@
+@import "../../scss/mixin";
+@import "../../scss/var";
+
+.blockForm {
+  width: 42%;
+  border: $border;
+  border-radius: 15px;
+  @include flex(column, center, space-evenly);
+
+  .text{
+    font-family:Calibri, sans-serif;
+    @include text(lighter, 18px)
+  }
+  .form {
+    width: 100%;
+    @include flex(row, center, space-evenly);
+
+
+    .textField{
+      width: 55%;
+    }
+  }
+  .link{
+    text-decoration: none;
+    color: mediumblue;
+  }
+}

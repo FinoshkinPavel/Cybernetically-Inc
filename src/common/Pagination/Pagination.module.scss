@@ -1,0 +1,7 @@
+@import "../../scss/mixin";
+@import "../../scss/var";
+
+.paginationBlock{
+  width: 45%;
+  @include flex(row, center, space-evenly);
+}
