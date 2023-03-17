@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Cybernetically-Inc/static/css/main.ebf7a167.css",
+    "main.js": "/Cybernetically-Inc/static/js/main.2c9fb1a8.js",
+    "static/js/787.28cb0dcd.chunk.js": "/Cybernetically-Inc/static/js/787.28cb0dcd.chunk.js",
+    "index.html": "/Cybernetically-Inc/index.html",
+    "main.ebf7a167.css.map": "/Cybernetically-Inc/static/css/main.ebf7a167.css.map",
+    "main.2c9fb1a8.js.map": "/Cybernetically-Inc/static/js/main.2c9fb1a8.js.map",
+    "787.28cb0dcd.chunk.js.map": "/Cybernetically-Inc/static/js/787.28cb0dcd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ebf7a167.css",
+    "static/js/main.2c9fb1a8.js"
+  ]
+}
