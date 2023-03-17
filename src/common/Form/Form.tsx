@@ -10,7 +10,7 @@ export const Form = () => {
   const dispatch = useAppDispatch();
   const formik = useFormik({
     initialValues: {
-      apiKey: "pk_fe0615293ada4cf689196891d4155333",
+      apiKey: "",
     },
     validationSchema,
     onSubmit: (values) => {
