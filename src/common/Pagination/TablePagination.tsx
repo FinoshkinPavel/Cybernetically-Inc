@@ -11,7 +11,7 @@ type PaginationPropsType = {
   setCountPerPageEl: (value: number) => void;
 };
 
-export const Pagination_: React.FC<PaginationPropsType> = (props) => {
+export const TablePagination: React.FC<PaginationPropsType> = (props) => {
   const { setCurrentPage, setCountPerPageEl, totalCountEl, countPerPageEl } =
     props;
 
@@ -34,13 +34,12 @@ export const Pagination_: React.FC<PaginationPropsType> = (props) => {
         showLastButton
         showFirstButton
       />
-      <span>Show</span>
+
       <Selector
         pageCount={countPerPageEl}
-        itemsCount={[4, 8, 16]}
+        itemsCount={[6, 18, 34]}
         setPageCount={setCountPerPageEl}
       />
-      <span>Cards per Page</span>
     </div>
   );
 };

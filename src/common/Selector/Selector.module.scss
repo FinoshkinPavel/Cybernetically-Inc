@@ -1,0 +1,7 @@
+@import "../../scss/mixin";
+@import "../../scss/var";
+
+.selectorBlock{
+  width: 34%;
+  @include flex(row, center, space-evenly)
+}

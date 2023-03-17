@@ -3,15 +3,19 @@ import { useFormik } from "formik";
 import { Button, TextField } from "@mui/material";
 import { validationSchema } from "../../utils/validate-utils";
 import s from "./Form.module.scss";
+import { useAppDispatch } from "../../hooks/useAppDispatch";
+import { fetchData } from "../../store/reducer/data-reducer/data-reducer";
 
 export const Form = () => {
+  const dispatch = useAppDispatch();
   const formik = useFormik({
     initialValues: {
       apiKey: "pk_fe0615293ada4cf689196891d4155333",
     },
     validationSchema,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      //alert(JSON.stringify(values, null, 2));
+      dispatch(fetchData(values.apiKey));
     },
   });
 

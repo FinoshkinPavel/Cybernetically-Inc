@@ -28,6 +28,9 @@
     "web-vitals": "^2.1.0",
     "yup": "^1.0.2"
   },
+  "jest": {
+    "transformIgnorePatterns": ["node_modules/(?!axios)/"]
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

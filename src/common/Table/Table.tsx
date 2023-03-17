@@ -6,55 +6,68 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { ResponseDataType } from "../../services/getData";
+import { CircularProgress } from "@mui/material";
+import { useAppSelector } from "../../hooks/useAppSelector";
+import { TablePagination } from "../Pagination/TablePagination";
+import { usePaginationData } from "../../hooks/usePaginationData";
+import { dataKey } from "../../utils/utils-const";
+import s from "./Table.module.scss";
 
-type TablePropsType = {
-  data: Array<ResponseDataType>;
-};
+export const DataTable: React.FC = () => {
+  const data = useAppSelector((state) => state.data);
 
-export const DataTable: React.FC<TablePropsType> = ({ data }) => {
-  const dataKey = Object.keys(data[0]);
+  const { paginationData, slicedData } = usePaginationData(data);
+  const requestStatus = useAppSelector((state) => state.requestStatus.status);
+
+  if (requestStatus === "loading") {
+    return (
+      <div className={s.circular}>
+        <CircularProgress color="inherit" />
+      </div>
+    );
+  }
+
   return (
-    <TableContainer
-      component={Paper}
-      sx={{ maxWidth: "90%", maxHeight: "50%" }}
-    >
-      <Table stickyHeader aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            {dataKey.map((el) => {
-              return (
-                <TableCell key={el} align="center">
-                  {el}
-                </TableCell>
-              );
-            })}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {data.map((el) => (
-            <TableRow
-              key={el.symbol}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
-              <TableCell component="th" scope="row" align="center">
-                {el.symbol}
-              </TableCell>
-              <TableCell align="center">{el.sector}</TableCell>
-              <TableCell align="center">{el.bidSize}</TableCell>
-              <TableCell align="center">{el.askSize}</TableCell>
-              <TableCell align="center">{el.bidPrice}</TableCell>
-              <TableCell align="center">{el.askPrice}</TableCell>
-              <TableCell align="center">{el.lastSaleSize}</TableCell>
-              <TableCell align="center">{el.lastSaleTime}</TableCell>
-              <TableCell align="center">{el.lastSalePrice}</TableCell>
-              <TableCell align="center">{el.lastUpdated}</TableCell>
-              <TableCell align="center">{el.securityType}</TableCell>
-              <TableCell align="center">{el.volume}</TableCell>
+    <>
+      <TableContainer component={Paper} sx={{ width: "90%", height: "50%" }}>
+        <Table stickyHeader aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              {dataKey.map((el) => {
+                return (
+                  <TableCell key={el} align="center">
+                    {el}
+                  </TableCell>
+                );
+              })}
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>
+          <TableBody>
+            {slicedData.map((el) => (
+              <TableRow
+                key={el.symbol}
+                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              >
+                <TableCell component="th" scope="row" align="center">
+                  {el.symbol}
+                </TableCell>
+                {Object.values(el).map((value) => (
+                  <TableCell align="center" key={value}>
+                    {value}
+                  </TableCell>
+                ))}
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      <TablePagination
+        totalCountEl={data ? data.length : 1}
+        countPerPageEl={paginationData.countPerPageEl}
+        setCountPerPageEl={paginationData.setCountPerPageEl}
+        currentPage={paginationData.currentPage}
+        setCurrentPage={paginationData.setCurrentPage}
+      />
+    </>
   );
 };
