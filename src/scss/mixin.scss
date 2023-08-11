@@ -1,0 +1,11 @@
+@mixin flex($flDr, $alIt,$juCont){
+  display: flex;
+  flex-direction: $flDr;
+  align-items: $alIt;
+  justify-content: $juCont;
+}
+
+@mixin text ($fw, $fs){
+  font-weight: $fw;
+  font-size: $fs;
+}

@@ -1,0 +1,31 @@
+@import "../../scss/mixin";
+@import "../../scss/var";
+
+.blockForm {
+	width: 25%;
+	height: 300px;
+	@include flex(column, center, space-evenly);
+
+	.textWrap {
+		width: 250px;
+		.text {
+			text-align: center;
+			font-family: Calibri, sans-serif;
+			@include text(lighter, 18px);
+		}
+	}
+
+	.form {
+		width: 100%;
+		height: 130px;
+		@include flex(column, center, space-evenly);
+
+		.textField {
+			width: 55%;
+		}
+	}
+	.link {
+		text-decoration: none;
+		color: mediumblue;
+	}
+}
