@@ -9,7 +9,7 @@ export function App() {
 		<div className={s.app}>
 			<ErrorSnackbar />
 			<Routes>
-				<Route path="/Cybernetically-Inc" element={<Form />} />
+				<Route path="/" element={<Form />} />
 				<Route path="/data/:apiKey" element={<DataTable />} />
 			</Routes>
 		</div>
